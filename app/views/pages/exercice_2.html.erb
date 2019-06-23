@@ -1,0 +1,32 @@
+<%= link_to "<-- Back to index", pages_path %>
+
+<p class="comment"> "@" remplace "v-on:" !<p>
+
+<div id="exercice_2">
+  <div>
+    <button @click='alertMe'>Click on Me !</button>
+  </div>
+
+  <div>
+    <input type="text" placeholder="Print on keydown" @keydown='printValue'><br>
+    <input type="text" placeholder="Only print when pressing Enter" @keydown.enter='printValue'>
+    <p>{{ input_value }}</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#exercice_2',
+    data: {
+      input_value: ''
+    },
+    methods: {
+      alertMe: function(){
+        alert('Outch ! You clicked on me !');
+      },
+      printValue: function(event){
+        this.input_value = event.target.value;
+      }
+    }
+  })
+</script>
