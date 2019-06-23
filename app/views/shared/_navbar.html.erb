@@ -1,0 +1,22 @@
+<div id='navbar' class='ml-2'>
+  <div class="navbar-section home">
+    <%= link_to counter_pages_path, class:'nav-link nav-head-link' do %>
+      <i class="material-icons">home</i>
+    <% end %>
+  </div>
+  <div class="navbar-section">
+    <%= link_to 'List of Course', counter_pages_path, class:'nav-link nav-head-link' %>
+    <ul class="nav flex-column">
+      <li class="nav-item"><%= link_to 'Counter / Coordinate / Stop / Prepend', counter_pages_path, class:'nav-link' %></li>
+      <li class="nav-item"><%= link_to 'Binding', binding_pages_path, class:'nav-link' %></li>
+    </ul>
+  </div>
+
+  <div class="navbar-section">
+    <%= link_to 'List of Exercices', exercice_1_pages_path, class:'nav-link nav-head-link' %>
+    <ul class="nav flex-column">
+      <li class="nav-item"><%= link_to 'Exercice 1', exercice_1_pages_path, class:'nav-link' %></li>
+      <li class="nav-item"><%= link_to 'Exercice 2 (events)', exercice_2_pages_path, class:'nav-link' %></li>
+    </ul>
+  </div>
+</div>

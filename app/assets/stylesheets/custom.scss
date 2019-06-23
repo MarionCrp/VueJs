@@ -1,0 +1,17 @@
+.nav-head-link {
+  font-weight: bold;
+}
+
+.nav-link:not(.nav-head-link) {
+  margin-left: 0.8rem;
+  font-size: 0.8em;
+}
+
+.nav-link {
+  color: grey;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #007bff;
+}

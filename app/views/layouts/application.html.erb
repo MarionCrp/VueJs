@@ -6,13 +6,51 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <%= content_for(:extra_css) %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class='m-3'>
+    <div class='row'>
+      <div class='span4'>
+        <%= render partial: 'shared/navbar' %>
+      </div>
+      <div id="main_content" class='span8 m-3'>
+        <% if content_for(:extra_comments).present? %>
+          Comments :
+          <div id="comments" :class='"alert alert-info" + hide_comment()'>
+            <!-- {{ comment }} -->
+            <%= yield :extra_comments %>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </div>
   </body>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var active_item = $('.navbar-section:not(.home)').find('a[href="<%= request.fullpath %>"]');
+      active_item.addClass('active');
+      active_item.closest('.navbar-section').find("a:first").addClass('active')
+    })
+
+    new Vue({
+      el: '#comments',
+      data: {
+        comment: 'to implement'
+      },
+      methods: {
+        hide_comment: function() {
+          return this.comment === '' ? ' d-none' : ''
+        }
+      }
+    })
+  </script>
 </html>

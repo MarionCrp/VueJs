@@ -1,6 +1,6 @@
-<%= link_to "<-- Back to index", pages_path %>
-
-<p class="comment"> "@" remplace "v-on:" !<p>
+<% content_for(:extra_comments) do %>
+  "@" remplace "v-on:" !
+<% end %>
 
 <div id="exercice_2">
   <div>
