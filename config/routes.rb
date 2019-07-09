@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'exercice_1'
       get 'exercice_2'
       get 'counter'
+      get 'binding'
     end
   end
 end

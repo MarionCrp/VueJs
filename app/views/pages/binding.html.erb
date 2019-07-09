@@ -1,0 +1,58 @@
+<div id="binding">
+  <input type="text" v-model='name'>
+  <p>{{ name }}</p>
+</div>
+
+<hr>
+
+<div id="number">
+  <button type="button" @click='counter++'>Increment</button>
+  <button type="button" @click='counter--'>Decrease</button>
+  <button type="button" @click='second_counter++'>Increment Second Counter</button>
+  <br>
+  <p>{{ counter }} | {{ second_counter }}</p>
+  <p>{{ display_result() }} | {{ output }}</p>
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#binding',
+    data: {
+      name: '',
+    }
+  })
+
+  new Vue({
+    el: '#number',
+    data: {
+      counter: 0,
+      second_counter: 0,
+      result: ''
+    },
+    // only called when NEEDED !
+    computed: {
+      output: function(){
+        console.log('Is called only when "counter" is changed');
+        return this.result = (this.counter == '5' ? 'Equal to 5' : this.counter > '5' ? 'Bigger than 5' : 'Smaller than 5');
+      }
+    },
+    watch: {
+      counter: function(value){
+        if(value == 10){
+          var vm = this;
+          setTimeout(function(){
+            alert("value is " + value + " ! Reseting");
+            vm.counter = 0
+          }, 2000);
+        }
+      }
+    },
+    methods: {
+      // Change when it is no need to be cached
+      display_result: function(){
+        console.log('Called everytime!');
+        return this.result = (this.counter == '5' ? 'Equal to 5' : this.counter > '5' ? 'Bigger than 5' : 'Smaller than 5');
+      }
+    }
+  })
+</script>
